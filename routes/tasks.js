@@ -31,5 +31,14 @@ router.put('/done', function(req, res) {
   }
 });
 
+router.delete('/', function(req, res) {
+  console.log(req.body);
+    Task.remove(req.body.task, function(err){
+      console.log(err);
+    });
+});
+
+
+
 
 module.exports = router;

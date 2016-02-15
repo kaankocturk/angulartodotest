@@ -11,7 +11,7 @@ app.controller('mainctrl', function($scope, $http, $filter){
     console.log(data);
     if(data.data.length){
       $scope.list = data.data.map(function(task){
-        return {description : task.desc, date: task.date};
+        return {description : task.desc, date: task.date, complete: task.isDone};
       });
     }
   },
@@ -36,6 +36,7 @@ app.controller('mainctrl', function($scope, $http, $filter){
     console.log(task);
     var formattedtask = {desc: task.description, date: task.date, isDone: task.complete};
     console.log(formattedtask);
+    $scope.list[$scope.list.indexOf(task)].complete = !task.complete;
     $http({method: 'PUT', url: '/tasks/done', data: {task:formattedtask}}).then(function success(data){
       console.log(data);
     },
@@ -49,4 +50,16 @@ app.controller('mainctrl', function($scope, $http, $filter){
     $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
     $scope.list = orderBy($scope.list, predicate, $scope.reverse);
 };
+
+  $scope.delete = function(task){
+    var formattedtask = {desc: task.description, date: task.date, isDone: task.complete};
+    $scope.list.splice($scope.list.indexOf(task),1);
+    $http({method: 'DELETE', url: '/tasks', data: {task:formattedtask}}).then(function success(data){
+      console.log(data);
+        },
+    function err(err){
+      console.log('Error:', err, 'error');
+    });
+  }
+
 });
