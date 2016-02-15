@@ -2,7 +2,7 @@
 
 var app = angular.module('myapp', []);
 
-app.controller('mainctrl', function($scope){
+app.controller('mainctrl', function($scope, $http){
   console.log('myapp');
   $scope.list = [];
   $scope.add = function(task){
