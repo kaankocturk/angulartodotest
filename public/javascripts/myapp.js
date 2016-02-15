@@ -9,7 +9,8 @@ app.controller('mainctrl', function($scope, $http){
     console.log(task);
     $http({method: 'POST', url: '/tasks/add', data: {task:task}}).then(function success(data){
       console.log(data);
-      // $scope.list.push(data);
+      var attr = {description : data.data.desc, date: data.data.date};
+      $scope.list.push(attr);
     },
     function err(err){
       console.log('Error:', err, 'error');

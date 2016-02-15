@@ -5,7 +5,7 @@
   <title>To do</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
-  <link rel='stylesheet' href='/public/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="/bower_components/angular/angular.min.js"></script>
 </head>
 <body ng-app='myapp' ng-controller='mainctrl'>
@@ -16,19 +16,19 @@
     <input type="date" ng-model='task.date'>
     <button class='btn btn-success' ng-click='add(task)'>Add task</button>
   </div>
-
-
-  <table>
-    <thead>
+  <div class="col-sm-8 col-sm-offset-2 well">
+    <table>
+      <thead>
         <tr><th ng-repeat='(key,value) in list[0]'>{{key}}</th></tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <tr ng-repeat='task in list track by $index'>
           <th ng-repeat='(key,value) in task'>{{value}}</th>
         </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>    
+  </div>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
-    <script src='/public/javascripts/myapp.js'></script>
+    <script src='/javascripts/myapp.js'></script>
 </body>
 </html>
