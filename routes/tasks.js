@@ -3,7 +3,9 @@ var router = express.Router();
 var Task = require('../models/task');
 
 router.get('/', function(req, res, next) {
-  Task.find({},function())
+  Task.find({},function(err, tasks){
+    res.send(tasks);
+  })
 });
 
 router.post('/add', function(req, res, next) {

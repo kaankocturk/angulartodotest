@@ -19,7 +19,7 @@
   <div class="col-sm-8 col-sm-offset-2 well">
     <table class='table table-striped table-hover'>
       <thead>
-        <tr><th ng-repeat='(key,value) in list[0]'>{{key}}</th></tr>
+        <tr><th ng-repeat='(key,value) in list[0]' ng-click='order(key)'>{{key}}</th></tr>
       </thead>
       <tbody>
         <tr ng-repeat='addedtask in list track by $index'>

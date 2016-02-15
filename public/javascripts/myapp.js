@@ -2,9 +2,23 @@
 
 var app = angular.module('myapp', []);
 
-app.controller('mainctrl', function($scope, $http){
+app.controller('mainctrl', function($scope, $http, $filter){
+  var orderBy = $filter('orderBy');
   console.log('myapp');
   $scope.list = [];
+
+  $http({method: 'GET', url: '/tasks'}).then(function success(data){
+    console.log(data);
+    if(data.data.length){
+      $scope.list = data.data.map(function(task){
+        return {description : task.desc, date: task.date};
+      });
+    }
+  },
+  function err(err){
+    console.log('Error:', err, 'error');
+  });
+
   $scope.add = function(task){
     console.log(task);
     $http({method: 'POST', url: '/tasks/add', data: {task:task}}).then(function success(data){
@@ -26,4 +40,10 @@ app.controller('mainctrl', function($scope, $http){
       console.log('Error:', err, 'error');
     });
   };
+
+  $scope.order = function(predicate) { //documentation is nice.
+    $scope.predicate = predicate;
+    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+    $scope.list = orderBy($scope.list, predicate, $scope.reverse);
+};
 });
