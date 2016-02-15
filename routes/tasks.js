@@ -15,4 +15,14 @@ router.post('/add', function(req, res, next) {
     res.send(task);
   });
 });
+
+// router.put('/done', function(req, res) {
+//   console.log(req.body);
+//   Task.update({}, {$set : {}}, function(err){
+//     console.log(err);
+//
+//   });
+// });
+
+
 module.exports = router;

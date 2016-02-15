@@ -9,13 +9,14 @@
   <script src="/bower_components/angular/angular.min.js"></script>
 </head>
 <body ng-app='myapp' ng-controller='mainctrl'>
-  <form action="">
+  <div class="col-sm-6 col-sm-offset-2">
     <label for="">Description</label>
     <input type="text" ng-model='task.desc'>
     <label for="">Date</label>
     <input type="date" ng-model='task.date'>
     <button class='btn btn-success' ng-click='add(task)'>Add task</button>
-  </form>
+  </div>
+
 
   <table>
     <thead>
