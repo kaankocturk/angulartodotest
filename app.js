@@ -3,7 +3,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/todo';
+var path = require('path');
+var mongoUrl = 'mongodb://localhost/todo';
 mongoose.connect(mongoUrl, function(err){
   if(err) return console.log('Error connecting to Mongodb:', err);
   console.log('Connected to MongoDB:', mongoUrl);
@@ -18,7 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', require('./routes/index'));
 app.use('/task', require('./routes/task'));
 

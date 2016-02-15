@@ -14,15 +14,17 @@
     <input type="text" ng-model='task.desc'>
     <label for="">Date</label>
     <input type="date" ng-model='task.date'>
-    <button class='btn btn-success' type='submit' ng-click='add(task)'>Add task</button>
+    <button class='btn btn-success' ng-click='add(task)'>Add task</button>
   </form>
 
   <table>
     <thead>
-
+        <tr><th ng-repeat='(key,value) in list[0]'>{{key}}</th></tr>
     </thead>
     <tbody>
-
+        <tr ng-repeat='task in list track by $index'>
+          <th ng-repeat='(key,value) in task'>{{value}}</th>
+        </tr>
     </tbody>
   </table>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>

@@ -6,6 +6,7 @@ app.controller('mainctrl', function($scope){
   console.log('myapp');
   $scope.list = [];
   $scope.add = function(task){
+    console.log(task);
     $http({method: 'POST', url: '/task/add', data: {task:task}}).then(function success(data){
       console.log(data);
       // $scope.list.push(data);
