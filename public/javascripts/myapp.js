@@ -36,16 +36,16 @@ app.controller('mainctrl', function($scope, $http, $filter){
     console.log(task);
     var formattedtask = {desc: task.description, date: task.date, isDone: task.complete};
     console.log(formattedtask);
-    $scope.list[$scope.list.indexOf(task)].complete = !task.complete;
     $http({method: 'PUT', url: '/tasks/done', data: {task:formattedtask}}).then(function success(data){
       console.log(data);
+      $scope.list[$scope.list.indexOf(task)].complete = !task.complete;
     },
     function err(err){
       console.log('Error:', err, 'error');
     });
   };
 
-  $scope.order = function(predicate) { //documentation is nice.
+  $scope.order = function(predicate) {
     $scope.predicate = predicate;
     $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
     $scope.list = orderBy($scope.list, predicate, $scope.reverse);
@@ -53,10 +53,10 @@ app.controller('mainctrl', function($scope, $http, $filter){
 
   $scope.delete = function(task){
     var formattedtask = {desc: task.description, date: task.date, isDone: task.complete};
-    $scope.list.splice($scope.list.indexOf(task),1);
     $http({method: 'DELETE', url: '/tasks', data: {task:formattedtask}}).then(function success(data){
       console.log(data);
-        },
+        $scope.list.splice($scope.list.indexOf(task),1);
+    },
     function err(err){
       console.log('Error:', err, 'error');
     });

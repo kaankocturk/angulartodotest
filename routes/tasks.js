@@ -23,10 +23,12 @@ router.put('/done', function(req, res) {
   if(req.body.task.isDone){
     Task.update(req.body.task, {$set : {isDone: false}}, function(err){
       console.log(err);
+      res.send(err);
     });
   }else{
     Task.update(req.body.task, {$set : {isDone: true}}, function(err){
       console.log(err);
+      res.send(err);
     });
   }
 });
@@ -35,6 +37,7 @@ router.delete('/', function(req, res) {
   console.log(req.body);
     Task.remove(req.body.task, function(err){
       console.log(err);
+      res.send(err);
     });
 });
 
