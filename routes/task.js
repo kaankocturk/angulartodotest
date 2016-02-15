@@ -7,7 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-  var task = req.body.task;
-
+  var task = new Task(req.body.task);
+  task.save(function(err,task){
+    console.log('err',err);
+    console.log('task', task);
+    res.send(task);
+  });
 });
 module.exports = router;
