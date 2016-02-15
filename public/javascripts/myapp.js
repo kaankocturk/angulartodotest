@@ -16,4 +16,14 @@ app.controller('mainctrl', function($scope, $http){
       console.log('Error:', err, 'error');
     });
   };
+
+  $scope.done = function(task){
+    var formattedtask = {desc: task.description, date: task.date};
+    $http({method: 'PUT', url: '/tasks/done', data: {task:formattedtask}}).then(function success(data){
+      console.log(data);
+    },
+    function err(err){
+      console.log('Error:', err, 'error');
+    });
+  };
 });

@@ -17,16 +17,17 @@
     <button class='btn btn-success' ng-click='add(task)'>Add task</button>
   </div>
   <div class="col-sm-8 col-sm-offset-2 well">
-    <table>
+    <table class='table table-striped table-hover'>
       <thead>
         <tr><th ng-repeat='(key,value) in list[0]'>{{key}}</th></tr>
       </thead>
       <tbody>
-        <tr ng-repeat='task in list track by $index'>
-          <th ng-repeat='(key,value) in task'>{{value}}</th>
+        <tr ng-repeat='addedtask in list track by $index'>
+          <th ng-repeat='(key,value) in addedtask'>{{value}}</th>
+          <th><button class='btn btn-warning'ng-click='done(addedtask)'>Done!</button></th>
         </tr>
       </tbody>
-    </table>    
+    </table>
   </div>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     <script src='/javascripts/myapp.js'></script>

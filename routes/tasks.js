@@ -3,7 +3,7 @@ var router = express.Router();
 var Task = require('../models/task');
 
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  Task.find({},function())
 });
 
 router.post('/add', function(req, res, next) {
@@ -16,13 +16,12 @@ router.post('/add', function(req, res, next) {
   });
 });
 
-// router.put('/done', function(req, res) {
-//   console.log(req.body);
-//   Task.update({}, {$set : {}}, function(err){
-//     console.log(err);
-//
-//   });
-// });
+router.put('/done', function(req, res) {
+  console.log(req.body);
+  Task.update(req.body.task, {$set : {isDone: true}}, function(err){
+    console.log(err);
+  });
+});
 
 
 module.exports = router;
