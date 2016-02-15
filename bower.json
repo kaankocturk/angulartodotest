@@ -1,0 +1,21 @@
+{
+  "name": "todoang",
+  "description": "",
+  "main": "",
+  "authors": [
+    "kaankocturk <kkocturk1@babson.edu>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kaankocturk/angulartodotest",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0"
+  }
+}
