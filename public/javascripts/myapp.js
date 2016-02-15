@@ -21,9 +21,10 @@ app.controller('mainctrl', function($scope, $http, $filter){
 
   $scope.add = function(task){
     console.log(task);
+    task.isDone = false;
     $http({method: 'POST', url: '/tasks/add', data: {task:task}}).then(function success(data){
       console.log(data);
-      var attr = {description : data.data.desc, date: data.data.date};
+      var attr = {description : data.data.desc, date: data.data.date, complete: data.data.isDone};
       $scope.list.push(attr);
     },
     function err(err){
@@ -32,7 +33,9 @@ app.controller('mainctrl', function($scope, $http, $filter){
   };
 
   $scope.done = function(task){
-    var formattedtask = {desc: task.description, date: task.date};
+    console.log(task);
+    var formattedtask = {desc: task.description, date: task.date, isDone: task.complete};
+    console.log(formattedtask);
     $http({method: 'PUT', url: '/tasks/done', data: {task:formattedtask}}).then(function success(data){
       console.log(data);
     },

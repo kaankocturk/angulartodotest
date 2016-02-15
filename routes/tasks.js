@@ -20,9 +20,15 @@ router.post('/add', function(req, res, next) {
 
 router.put('/done', function(req, res) {
   console.log(req.body);
-  Task.update(req.body.task, {$set : {isDone: true}}, function(err){
-    console.log(err);
-  });
+  if(req.body.task.isDone){
+    Task.update(req.body.task, {$set : {isDone: false}}, function(err){
+      console.log(err);
+    });
+  }else{
+    Task.update(req.body.task, {$set : {isDone: true}}, function(err){
+      console.log(err);
+    });
+  }
 });
 
 

@@ -25,6 +25,7 @@
         <tr ng-repeat='addedtask in list track by $index'>
           <th ng-repeat='(key,value) in addedtask'>{{value}}</th>
           <th><button class='btn btn-warning'ng-click='done(addedtask)'>Done!</button></th>
+          <th><button class='btn btn-warning'ng-click='delete(addedtask)'>Delete!</button></th>
         </tr>
       </tbody>
     </table>
