@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
+  console.log(req.body);
   var task = new Task(req.body.task);
   task.save(function(err,task){
     console.log('err',err);

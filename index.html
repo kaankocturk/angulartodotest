@@ -11,10 +11,10 @@
 <body ng-app='myapp' ng-controller='mainctrl'>
   <form action="">
     <label for="">Description</label>
-    <input type="text" ng-model='desc'>
+    <input type="text" ng-model='task.desc'>
     <label for="">Date</label>
-    <input type="date">
-    <button class='btn btn-success' type='submit' ng-click='add()'>Add task</button>
+    <input type="date" ng-model='task.date'>
+    <button class='btn btn-success' type='submit' ng-click='add(task)'>Add task</button>
   </form>
 
   <table>

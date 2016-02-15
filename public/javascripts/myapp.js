@@ -3,6 +3,7 @@
 var app = angular.module('myapp', []);
 
 app.controller('mainctrl', function($scope){
+  console.log('myapp');
   $scope.list = [];
   $scope.add = function(task){
     $http({method: 'POST', url: '/task/add', data: {task:task}}).then(function success(data){
