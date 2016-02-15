@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
-var mongoUrl = 'mongodb://localhost/todo';
+var mongoUrl = process.env.MONGOLAB_URI || process.env.MONGO_URL || 'mongodb://localhost/todo';
 mongoose.connect(mongoUrl, function(err){
   if(err) return console.log('Error connecting to Mongodb:', err);
   console.log('Connected to MongoDB:', mongoUrl);
